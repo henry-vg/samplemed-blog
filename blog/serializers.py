@@ -1,6 +1,8 @@
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import User
 from rest_framework import serializers
-from blog.models import User, Keyword, Article, Comment
+
+from blog.models import Article, Comment, Keyword
 
 
 class UserSerializer(serializers.ModelSerializer):
