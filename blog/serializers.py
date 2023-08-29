@@ -1,6 +1,6 @@
 from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
-from blog.models import User, Keyword, Article
+from blog.models import User, Keyword, Article, Comment
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -29,4 +29,10 @@ class KeywordSerializer(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
+        fields = '__all__'
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
         fields = '__all__'
