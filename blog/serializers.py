@@ -1,6 +1,7 @@
 from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
-from blog.models import User
+from blog.models import User, Keyword
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,3 +18,9 @@ class UserSerializer(serializers.ModelSerializer):
             validated_data['password'] = make_password(
                 validated_data['password'])
         return super().update(instance, validated_data)
+
+
+class KeywordSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Keyword
+        fields = '__all__'
