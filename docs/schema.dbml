@@ -1,0 +1,44 @@
+Table User {
+  ID int [pk]
+  username varchar(255) [unique, not null]
+  email varchar(254) [unique, not null]
+  password varchar(255) [not null]
+  first_name varchar(255) 
+  last_name varchar(255)
+  is_superuser boolean  
+  is_staff boolean
+  is_active boolean
+  last_login datetime [not null]
+  date_joined datetime [not null]
+}
+
+Table Article {
+  ID int [pk]
+  author int [ref: > User.ID, not null]
+  title varchar(255) [not null]
+  subtitle varchar(255)
+  content text [not null]
+  created_at datetime [not null, default: `now()`]
+  updated_at datetime [not null, default: `now()`]
+}
+
+Table Keyword {
+  ID int [pk]
+  keyword varchar(64) [unique, not null]
+}
+
+Table Article_Keyword {
+  article int [ref: > Article.ID, not null]
+  keyword int [ref: > Keyword.ID, not null]
+  primary key (article, keyword)
+}
+
+Table Comment {
+  ID int [pk]
+  author int [ref: > User.ID, not null]
+  content text [not null]
+  article int [ref: > Article.ID, not null]
+  parent_comment int [ref: > Comment.ID]
+  created_at datetime [not null, default: `now()`]
+  updated_at datetime [not null, default: `now()`]
+}
