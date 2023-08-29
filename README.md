@@ -16,7 +16,7 @@ cd samplemed-blog
 3. Execute o Docker Compose para iniciar o servidor:
 
 ```bash
-docker compose up
+docker-compose up -d
 ```
 4. Acesse a coleção do Postman:
 Na pasta **docs/** do diretório raiz, você encontrará três arquivos:
